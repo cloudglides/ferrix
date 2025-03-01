@@ -1,0 +1,45 @@
+# Standard Rust ignores
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# Nix/Flakes ignores
+/result
+/result-*
+*.dump
+.direnv/
+.nix-shell*
+
+# direnv/envrc (if you want to keep .envrc tracked, remove this line)
+.envrc
+.envrc.local
+.envrc.secret
+
+# Editor/IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bk
+
+# Build outputs
+*.o
+*.so
+*.dylib
+*.dll
+*.exe
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Debug files
+*.debug
+*.profdata
+*.exp

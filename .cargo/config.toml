@@ -1,0 +1,25 @@
+# .cargo/config.toml
+[build]
+# Default build target
+target = "x86-kernel.json"
+
+# Enable building core/std
+[unstable]
+build-std = ["core", "compiler_builtins"]
+build-std-features = ["compiler-builtins-mem"]
+
+# Target-specific configuration
+[target.x86-kernel]
+# Use LLD as linker
+linker = "rust-lld"
+# Custom linker script
+rustflags = [
+    "-C", "link-arg=-Tlinker.ld",
+    "-C", "linker-flavor=ld.lld",
+    "-C", "relocation-model=static",
+    "-C", "force-frame-pointers=yes"
+]
+
+# QEMU runner configuration (optional)
+[target.'cfg(target_os = "none")']
+runner = "qemu-system-i386 -kernel target/x86-kernel/debug/ferrix -machine q35 -cpu qemu32 -serial mon:stdio"
